@@ -1,35 +1,34 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { Title } from '@mui/icons-material';
-
-export default function CardComponent({ id, name, title, model, description, price, image }) {
+export default function CardComponent({
+  id,
+  name,
+  title,
+  model,
+  description,
+  price,
+  image,
+}) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt={name}
-        height="140"
-        image= {image}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title} - {model}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description}
-          {price}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Buy Now!</Button>
-    </CardActions>
-    </Card>
+    <div key={id} className="group relative">
+      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+        <img
+          src={image}
+          alt={"Product Image"}
+          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+        />
+      </div>
+      <div className="mt-4 flex justify-between">
+        <div>
+          <h3 className="text-sm text-gray-700">
+            {/* Usar link de next.js */}
+            <a href={`/products/${id}`}>
+              <span aria-hidden="true" className="absolute inset-0" />
+              {title}
+            </a>
+          </h3>
+          <p className="mt-1 text-sm text-gray-500">{description}</p>
+        </div>
+        <p className="text-sm font-medium text-gray-900">{price}</p>
+      </div>
+    </div>
   );
-};
-
-
+}

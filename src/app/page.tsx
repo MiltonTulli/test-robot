@@ -1,20 +1,18 @@
-import ImageBanner from "./components/ImageBanner"
-import FeaturedProducts from "./components/FeaturedProducts"
+// "use client";
 
+// import ImageBanner from "./components/ImageBanner";
+import "./globals.css";
+import FeaturedProducts from "./components/FeaturedProducts";
 
-export default function HomePage( { children }) {
-  return  (
+export default function HomePage({ children }) {
+  return (
     <div>
-    
-      <ImageBanner/>
-      
-      <FeaturedProducts/>
+      {/* <ImageBanner /> */}
+      {/* @ts-expect-error Server Component */}
+      <FeaturedProducts />
       {children}
     </div>
-  )
-
-
-
+  );
 }
 
 // Usar https://www.firstleaf.club/ de inspiración..
