@@ -1,8 +1,8 @@
+import GetData from "../components/FeaturedProducts"
 
-
-export default function Store() {
+export default async function Store() {
     return(
     
-    <h1>Esta va a ser el store</h1>
+    <h1> hola </h1>
     )
 }
