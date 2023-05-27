@@ -1,4 +1,4 @@
-// import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import ResponsiveAppBar from "./components/ResponsiveAppBar";
 
 export default function RootLayout({ children }) {
   return (
@@ -7,7 +7,7 @@ export default function RootLayout({ children }) {
         <title>TechZone</title>
       </head>
       <body>
-        {/* <ResponsiveAppBar/> */}
+         <ResponsiveAppBar/> 
 
         {children}
       </body>
