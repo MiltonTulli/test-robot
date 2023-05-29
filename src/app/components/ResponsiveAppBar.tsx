@@ -7,7 +7,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { aborted } from 'util'
 
 const navigation = [
-  { label: 'Store', route: '/store', current: false },
+  { label: 'Products', route: '/products', current: false },
   { label: 'About', route: '/about', current: false },
   { label: 'Contact', route: '/contact', current: false },
   
