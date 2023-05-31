@@ -5,3 +5,4 @@ export async function getProducts(args: any = {}) {
     args,
   );
 }
+
