@@ -1,25 +1,22 @@
-"use client"
-import Link from 'next/link'
-import Image from 'next/image'
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { label: 'Products', route: '/products', current: false },
-  { label: 'About', route: '/about', current: false },
-  { label: 'Contact', route: '/contact', current: false },
-  
-]
+  { label: "Products", route: "/products", current: false },
+  { label: "About", route: "/about", current: false },
+  { label: "Contact", route: "/contact", current: false },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function ResponsiveAppBar() {
   return (
-    
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
@@ -37,47 +34,43 @@ export default function ResponsiveAppBar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <Link
-                 href= './'
-                 key='./'
-                 className={classNames}>
-                <div className="flex flex-shrink-0 items-center">
-                  <Image
-                    className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt=""
-                    width={100}
-                    height={100}
-                  />
-                  <Image
-                    className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt=""
-                    width={100}
-                    height={100}
-                  />
-                </div>
+                <Link href="./" key="./" className={classNames}>
+                  <div className="flex flex-shrink-0 items-center">
+                    <Image
+                      className="block h-8 w-auto lg:hidden"
+                      src="/logo.png"
+                      alt=""
+                      width={300}
+                      height={300}
+                    />
+                    <Image
+                      className="hidden h-8 w-auto lg:block"
+                      src="/logo.png"
+                      alt=""
+                      width={300}
+                      height={300}
+                    />
+                  </div>
                 </Link>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {navigation.map(( {label, route} ) => (
+                    {navigation.map(({ label, route }) => (
                       <Link
                         href={route}
                         key={route}
                         className={classNames(
-                          label.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
+                          label.current
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
                         )}
-                        aria-current={label.current ? 'page' : undefined}
+                        aria-current={label.current ? "page" : undefined}
                       >
-                        
                         {label}
-                        
                       </Link>
                     ))}
                   </div>
                 </div>
-                
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
@@ -116,7 +109,10 @@ export default function ResponsiveAppBar() {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Your Profile
                           </a>
@@ -126,7 +122,10 @@ export default function ResponsiveAppBar() {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Settings
                           </a>
@@ -136,7 +135,10 @@ export default function ResponsiveAppBar() {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Sign out
                           </a>
@@ -157,10 +159,12 @@ export default function ResponsiveAppBar() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
@@ -170,8 +174,5 @@ export default function ResponsiveAppBar() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
-
-
-
