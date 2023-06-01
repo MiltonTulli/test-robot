@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { aborted } from 'util'
+
 
 const navigation = [
   { label: 'Products', route: '/products', current: false },
@@ -19,6 +19,7 @@ function classNames(...classes) {
 
 export default function ResponsiveAppBar() {
   return (
+    
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
@@ -36,6 +37,10 @@ export default function ResponsiveAppBar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <Link
+                 href= './'
+                 key='./'
+                 className={classNames}>
                 <div className="flex flex-shrink-0 items-center">
                   <Image
                     className="block h-8 w-auto lg:hidden"
@@ -52,10 +57,12 @@ export default function ResponsiveAppBar() {
                     height={100}
                   />
                 </div>
+                </Link>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map(( {label, route} ) => (
-                      <a
+                      <Link
+                        href={route}
                         key={route}
                         className={classNames(
                           label.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -63,13 +70,14 @@ export default function ResponsiveAppBar() {
                         )}
                         aria-current={label.current ? 'page' : undefined}
                       >
-                        <Link href={route}>
+                        
                         {label}
-                        </Link>
-                      </a>
+                        
+                      </Link>
                     ))}
                   </div>
                 </div>
+                
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
@@ -167,124 +175,3 @@ export default function ResponsiveAppBar() {
 
 
 
-
-
-
-
-/*
-import Link from 'next/link';
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-
-const pages = [{
-  label:'Store',
-  route:'/store'},{
-  label: 'About',
-  route: '/about'}, {
-  label: 'Contact',
-  route: '/contact'}
-];
-
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-  return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AutoAwesomeIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-          TechZone
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map(( {label, route} ) => (
-              
-              <Button
-                key={route}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Link href={route}
-                >
-                {label}
-                </Link>
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
-}
-export default ResponsiveAppBar;
-*/

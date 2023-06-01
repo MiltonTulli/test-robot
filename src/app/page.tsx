@@ -4,7 +4,7 @@ import ImageBanner from "./components/ImageBanner";
 import "./globals.css";
 import FeaturedProducts from "./components/FeaturedProducts";
 import StoreBanner from "./components/StoreBanner";
-import Footer from "./components/Footer";
+
 
 
 export default function HomePage({ children }) {
@@ -16,7 +16,7 @@ export default function HomePage({ children }) {
       
       <FeaturedProducts />
       <StoreBanner />
-      <Footer/>
+      
       
       {children}
     </div>
