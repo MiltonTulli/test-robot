@@ -5,11 +5,13 @@ import Image from 'next/image';
 
 export default function ImageBanner() {
   return (
-    <div className="bg-gray-800">
-      <div className="mx-auto max-w-2xl flex flex-col justify-center items-center gap-4 px-2 py-16 sm:px-4 sm:py-24 lg:max-w-7xl lg:flex-row lg:px-8">
+    <div className="bg-violet-500">
+      <div className="mx-auto max-w-xl flex flex-col justify-center items-center gap-4 px-2 py-2 sm:px-4 sm:py-6 lg:max-w-7xl lg:flex-row lg:px-8">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-6xl text-white">Welcome to Tech Zone!</h2>
-          <p className="mt-4 text-gray-500">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-7xl text-gray-800">
+            Welcome to Tech Zone!
+          </h2>
+          <p className="text-justify mr-16 mt-4 sm:text-xl text-gray-800">
           We're your go-to home webstore for the latest and greatest tech products. 
           Discover innovation at its finest with our carefully curated selection of cutting-edge gadgets and accessories. 
           From smartphones to smart home devices, we've got what you need to elevate your digital lifestyle. 
@@ -19,8 +21,8 @@ export default function ImageBanner() {
         <div className="flex justify-center">
           <Image
             src="/banner.jpeg"
-            width={900}
-            height={900}
+            width={1200}
+            height={1200}
             alt="Image"
             className="rounded-lg bg-gray-100"
           />
