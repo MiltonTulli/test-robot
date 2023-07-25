@@ -3,11 +3,11 @@ import ProductSearch from "./ProductSearch";
 export default function ProductsLayout({ children }) {
   return (
     <>
-      <body>
+      <div>
         <ProductSearch/> 
         {children}
         
-      </body>
+      </div>
     </>
   );
 }

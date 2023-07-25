@@ -6,21 +6,23 @@ export default function ProductSearch() {
   const [search, setSearch] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean >(false)
+  
 
-  const onSearch = async () => {
+  const onSearch = async (e: React.FormEvent) => {
+   // e.preventDefault();
     setIsLoading(true);
     const url = "http://localhost:3000/api/products";
     try {
       let response = await fetch(`${url}?q=${encodeURIComponent(search)}`);
       const data = await response.json();
-      const filteredProducts = data.data;
+      const filteredProducts = data.data; // ya estaba definida esta variable en el useState?
       setFilteredProducts(filteredProducts);
+      setIsLoading(false);
     } catch (e) {
       console.log("error");
       setFilteredProducts([]);
-    } finally {
       setIsLoading(false);
-    }
+    } 
   };
 
   // por que aca si se puede usar el async await?
@@ -29,42 +31,46 @@ export default function ProductSearch() {
     // TODO: cuando carga el componente que haga un fetch para obtener todos los productos.
     onSearch();
     
-  }, []);
+  }, [search]);
 
   return (
     <div className="search-bar">
-      <input
-        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        type="text"
-        placeholder="Search..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <button onClick={onSearch}>Search Product</button>
-
+      <div>
+        <input
+          className="px-5 py-1 w-2/3 sm:px-5 sm:py-3 flex-1 text-zinc-200 bg-zinc-800 focus:bg-black rounded-full focus:outline-none focus:ring-[1px] focus:ring-green-700 placeholder:text-zinc-400"
+          type="text"
+          placeholder="What are you looking for?"
+          value={search || ""}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       
+      <div>-----</div>
 
-      <div> {isLoading && <span>Loading...</span>} </div>
-
-      {filteredProducts.length === 0 && <span>No products found</span>}
+      {isLoading && (<div className="flex justify-center my-4"><span>Loading...</span></div>)}
+      {(!isLoading && filteredProducts.length === 0) && <span>No products found</span>}
 
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        {filteredProducts.map((product) => (
-          <CardComponent
-            id={product.id}
-            key={product.id}
-            name={product.name}
-            title={product.title}
-            model={product.model}
-            description={product.description}
-            price={product.price}
-            image={product.image}
-          />
-        ))}
+        {/* Render all products when searchCompleted is true */}
+        {!isLoading &&
+          filteredProducts.map((product) => (
+            <CardComponent
+              id={product.id}
+              key={product.id}
+              name={product.name}
+              title={product.title}
+              model={product.model}
+              description={product.description}
+              price={product.price}
+              image={product.image}
+            />
+          ))}
       </div>
     </div>
   );
 }
+
+
 
 // Actualizar valor de input -- ok
 // Como pasar ese valor de búsqueda a la api -- ok
